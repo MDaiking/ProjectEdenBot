@@ -1,8 +1,7 @@
 import os
 
 async def get_upmarin_user(client):
-    await upmarin_id = os.environ.get("UPMARIN_ID")
-    return await client.fetch_user(upmarin_id)
+    return await client.fetch_user(os.environ.get("UPMARIN_ID"))
 
 
 async def get_token():

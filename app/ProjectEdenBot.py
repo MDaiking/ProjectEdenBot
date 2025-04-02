@@ -22,4 +22,4 @@ async def on_message(message):
     if message.content == '/Close':
         await BasicFunc.close(message)
     
-client.run(Config.TOKEN)
+client.run(Config.get_token)
