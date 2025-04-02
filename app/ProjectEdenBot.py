@@ -22,4 +22,6 @@ async def on_message(message):
     if message.content == '/Close':
         await BasicFunc.close(message)
     
+from server import server_thread
+server_thread()
 client.run(Config.get_token)
