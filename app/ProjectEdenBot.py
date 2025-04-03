@@ -23,7 +23,7 @@ async def on_message(message):
         await message.channel.send('これはテスト用テキストです')
 
     if message.content == '/Close':
-        await BasicFunc.close(message)
+        await BasicFunc.close(client, message)
 
 server_thread()
 client.run(Config.get_token())
