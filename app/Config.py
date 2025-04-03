@@ -9,5 +9,5 @@ async def get_upmarin_user(client):
     return await client.fetch_user(os.getenv('UPMARIN_ID'))
 
 
-async def get_token():
-    return await os.getenv('TOKEN')
+def get_token():
+    return os.getenv('TOKEN')
