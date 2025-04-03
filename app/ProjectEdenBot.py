@@ -1,14 +1,17 @@
 import discord
 import Config
 import BasicFunc
+from server import server_thread
 
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
 
+
 @client.event
 async def on_ready():
     print(f'logged in as {client.user}')
+
 
 @client.event
 async def on_message(message):
@@ -21,7 +24,6 @@ async def on_message(message):
 
     if message.content == '/Close':
         await BasicFunc.close(message)
-    
-from server import server_thread
+
 server_thread()
 client.run(Config.get_token())
