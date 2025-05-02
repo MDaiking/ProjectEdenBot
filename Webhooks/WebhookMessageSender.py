@@ -1,25 +1,37 @@
 import os
 import requests
 import json
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class WebhookMessageSender:
 
-    _webhook_url = os.environ.get("WEBHOOK_URL")
+    def _get_webhook_url():
+        return os.environ.get("WEBHOOK_URL")
 
-    _headers = {
-        'Content-Type': 'application/json'
-    }
+    def _get_headers():
+        return {
+                    'Content-Type': 'application/json'
+                }
 
-    def send_message(self, message):
-        if self._webhook_url is None:
+    @classmethod
+    def send_message(cls, message):
+        _webhook_url = cls._get_webhook_url()
+        if _webhook_url is None:
             print("There has no value in webhook_url")
             return
 
+        _headers = cls._get_headers()
+        if _headers is None:
+            print("There has no value in headers")
+            return
+
         response = requests.post(
-                                self._webhook_url,
+                                _webhook_url,
                                 data=json.dumps(message),
-                                headers=self._headers
+                                headers=_headers
                                 )
 
         if response.status_code != 204:
