@@ -39,3 +39,8 @@ class WebhookMessageSender:
 
     def get_everyone_mention():
         return "@everyone "
+    
+    def get_specific_mention(id):
+        if id is None:
+            return "@[#Invalid ID]"
+        return f"<@&{id}> "
